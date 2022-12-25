@@ -1,0 +1,151 @@
+//Program to check whether the given character is vowel or not
+#include <stdio.h>
+#include <ctype.h>
+
+int main()
+{
+    char ch;
+    ch = getc(stdin);
+    ch = tolower(ch);
+    switch(ch){
+        case 'a': case 'e': case 'i': case 'o': case 'u':
+            printf("Vowel");
+            break;
+        default:
+            printf("Not Vowel");
+    }
+
+    return 0;
+}
+
+//Program to check whether the given character is consonant or not
+#include <stdio.h>
+
+#include <ctype.h>
+int main()
+{
+    char ch;
+    ch = getc(stdin);
+    
+    // if (( ch >='a' && ch<='z') || (ch>='A' && ch<='Z'))
+{
+    if (isalpha(ch))
+{
+        switch(ch)
+{
+            case 'a': case 'e': case 'i': case 'o': case 'u':
+                printf("Vowel");
+                break;
+            default:
+                printf("Consonant");
+        }
+    }
+    else
+        printf("Not an alphabet");
+    return 0;
+}
+//C program to validate date (Check date is valid or not)
+ 
+#include <stdio.h>
+ 
+int main()
+{
+    int dd,mm,yy;
+     
+    printf("Enter date (DD/MM/YYYY format): ");
+    scanf("%d/%d/%d",&dd,&mm,&yy);
+     
+    //check year
+    if(yy>=1900 && yy<=9999)
+    {
+        //check month
+        if(mm>=1 && mm<=12)
+        {
+            //check days
+            if((dd>=1 && dd<=31) && (mm==1 || mm==3 || mm==5 || mm==7 || mm==8 || mm==10 || mm==12))
+                printf("Date is valid.\n");
+            else if((dd>=1 && dd<=30) && (mm==4 || mm==6 || mm==9 || mm==11))
+                printf("Date is valid.\n");
+            else if((dd>=1 && dd<=28) && (mm==2))
+                printf("Date is valid.\n");
+            else if(dd==29 && mm==2 && (yy%400==0 ||(yy%4==0 && yy%100!=0)))
+                printf("Date is valid.\n");
+            else
+                printf("Day is invalid.\n");
+        }
+        else
+        {
+            printf("Month is not valid.\n");
+        }
+    }
+    else
+    {
+        printf("Year is not valid.\n");
+    }
+ 
+    return 0;    
+}
+
+
+//Day of the given date in c
+#include<stdio.h>
+#include<math.h>
+#include<time.h>
+#include<locale.h>
+#include<stdlib.h>
+
+//--------------------------------------------------------
+// FUNCTION PROTOTYPES
+//--------------------------------------------------------
+void showdatesanddays(void);
+int zellergregorian(struct tm* date);
+
+//--------------------------------------------------------
+// FUNCTION main
+//--------------------------------------------------------
+int main(void)
+{
+    puts("-----------------------");
+    puts("| codedrome.com       |");
+    puts("| Zeller's Congruence |");
+    puts("-----------------------\n");
+
+    showdatesanddays();
+
+    return EXIT_SUCCESS;
+}
+
+//--------------------------------------------------------
+// FUNCTION showdatesanddays
+//--------------------------------------------------------
+void showdatesanddays()
+{
+    // set of day names corresponding to Zeller's h value
+    char* daynames[] = {"Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
+
+    char datestring[64];
+    char daystring[10];
+    struct tm date = {};
+    int h;
+
+    srand(time(NULL));
+
+    // generate 20 random dates
+    for(int i = 0; i < 20; i++)
+    {
+        date.tm_year = (rand() % 2017) - 1900; // in tm, the year is based on 1900
+        date.tm_mon = rand() % 11;
+        date.tm_mday = rand() % 365; // mktime will sort out tm_mday, eg 32 January becomes 1 February
+
+        // normalize date and set other fields
+        mktime(&date);
+
+        strftime(datestring, 64, "%d %B %Y", &date);
+        strftime(daystring, 10, "%A", &date);
+        //h = zellergregorian(&date);
+
+        printf("Date %s\n", datestring);
+        printf("Day (C library) %s\n", daystring);
+        //printf("Day (Zeller) %s\n\n", daynames[h]);
+    }
+}
