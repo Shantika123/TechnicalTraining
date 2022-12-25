@@ -1,0 +1,26 @@
+//Program to calculate interest
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+int principle;
+char interest_type;
+float time, rate_of_interest,interest;
+scanf("%d", &principle);
+scanf("%f", &rate_of_interest);
+scanf("%f", &time);
+// interest_type = getchar();
+// interest_type = getc(stdin);
+scanf("%c", &interest_type);
+scanf("%c", &interest_type);
+if (interest_type == 'C' ||interest_type == 'c')
+{
+interest = principle *pow (1 +rate_of_interest / 100, time) -principle;
+}
+else if ( interest_type =='s' ||interest_type == 'S')
+{
+interest = principle * time*rate_of_interest / 100;
+}
+printf("Interest : %.2f",interest);
+return 0;
+}
