@@ -1,0 +1,116 @@
+#include<stdio.h>
+int main()
+{
+     int size;
+     scanf("%d",&size);
+     int arr[size];
+     for(int index=0;index<size;index++)
+     scanf("%d",&arr[index]);
+     for(int index=0;index<size;index++)
+     printf("%d ",arr[index]);
+     
+}
+
+\\reversing an array
+#include<stdio.h>
+int main()
+{https://www.onlinegdb.com/online_c_compiler#editor_1
+     int size;
+     scanf("%d",&size);
+     int arr[size];
+     for(int index=0;index<size;index++)
+     scanf("%d",&arr[index]);
+     for(int lb = 0,ub=size-1;lb<ub;lb++,ub--)
+    {
+         int temp=arr[lb];
+         arr[lb]=arr[ub];
+         arr[ub]=temp;
+    }
+         for(int index=0;index<size;index++)
+     printf("%d ",arr[index]);
+  return 0;   
+}
+
+
+//reversing 
+#include<stdio.h>
+int main()
+{
+     int size;
+     scanf("%d",&size);
+     int arr[size];
+     for(int index=0;index<size;index++)
+     scanf("%d",&arr[index]);
+     for(int lb = 0,ub=size-1;lb<ub;lb++,ub--)
+    {
+       arr[lb]=arr[lb]+arr[ub];
+       arr[ub]=arr[lb]-arr[ub];
+       arr[lb]=arr[lb]-arr[ub];
+    }
+         for(int index=0;index<size;index++)
+     printf("%d ",arr[index]);
+  return 0;   
+}
+
+
+//revesing
+#include<stdio.h>
+int main()
+{
+     int size;
+     scanf("%d",&size);
+     int arr[size];
+     for(int index=0;index<size;index++)
+     scanf("%d",&arr[index]);
+     for(int lb = 0,ub=size-1;lb<ub;lb++,ub--)
+    {
+       arr[lb]=(arr[lb]+arr[ub])-(arr[ub]=arr[lb]);
+      
+    }
+         for(int index=0;index<size;index++)
+     printf("%d ",arr[index]);
+  return 0;   
+}
+
+
+
+//program to search an element in an array linear search
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+   int arr[]={10,20,30,40,45,43,90,60};
+   int size=sizeof(arr)/ sizeof(arr[0]);
+   int search_element;
+   scanf("%d",&search_element);
+   for(int index=0;index<size;index++)
+   {  
+        if(arr[index]==search_element)
+        {
+          printf ("found @ %d",index+1);
+          exit(0);
+        }
+        
+   }
+   printf("not found");
+  return 0;   
+}
+
+
+
+//program to search number of same  element /frequency of an element in an array linear search
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+   int arr[]={10,20,30,40,45,43,90,60,10,20, 30 , 30};
+   int freq=0;
+   int size=sizeof(arr)/ sizeof(arr[0]);
+   int search_element;
+   scanf("%d",&search_element);
+   for(int index=0;index<size;index++)
+        if(arr[index]==search_element)
+        freq++;
+   printf("Frequency=%d\n",freq);
+  return 0;   
+}
